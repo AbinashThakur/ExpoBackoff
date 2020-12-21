@@ -1,5 +1,5 @@
 import pika
-from server import get_url
+from server import get_status
 
 def rbmq_receiver():
 
@@ -13,7 +13,7 @@ def rbmq_receiver():
 
 	    if cmd:
 	    	print("received {}".format(cmd))
-	    	print(get_url(cmd))
+	    	print(get_status(cmd))
 	    ch.basic_ack(delivery_tag=method.delivery_tag)
 	    
 	channel.basic_qos(prefetch_count=1)

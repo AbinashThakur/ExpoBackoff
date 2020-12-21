@@ -17,7 +17,7 @@ def dummy_api():
 		x = {"pid" : pid, "deltatime" : int(nextTime.strftime("%s"))*1000}
 		
 		content = json.dumps(x)
-		
+		result = rbmq_sender(content)
 		if result:
 			print("Sent " + content)
 			return content
