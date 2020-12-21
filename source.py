@@ -13,12 +13,11 @@ def dummy_api():
 		pid = uuid.uuid4().hex[:10]
 		tss = dt.datetime.now()
 		nextTime = dt.datetime.now() + dt.timedelta(minutes = 1)
-		# print(pid + " Current request @ " + tss.strftime("%Y-%m-%d %H:%M:%S") + " Next request @ " + nextTime.strftime("%Y-%m-%d %H:%M:%S"))
+		
 		x = {"pid" : pid, "deltatime" : int(nextTime.strftime("%s"))*1000}
-		# x = {"pid" : pid, "deltatime" : nextTime.timestamp()*100000}
+		
 		content = json.dumps(x)
-		# content = pid + " Current request @ " + tss.strftime("%Y-%m-%d %H:%M:%S") + " Next request @ " + nextTime.strftime("%Y-%m-%d %H:%M:%S")
-		result = rbmq_sender(content)
+		
 		if result:
 			print("Sent " + content)
 			return content
